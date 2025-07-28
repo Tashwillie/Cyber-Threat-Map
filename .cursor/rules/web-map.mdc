@@ -1,0 +1,35 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You are an expert full‑stack JavaScript/TypeScript engineer.
+
+### Goal
+Build an open‑source “Cyber‑Attack Threat Map” web app that mimics Check Point’s public map (https://threatmap.checkpoint.com/) but uses ONLY permissive libraries and mock attack data.  
+The project must run locally with:
+
+- **Node 18 +**
+- **TypeScript** on both client & server
+- **Vite** for fast front‑end dev
+- **ESM** everywhere (no CommonJS)
+- **pnpm** workspace layout
+
+### High‑level features
+1. Real‑time 3‑D globe showing animated attack arcs.  
+2. Socket.IO push of live (mock) attacks from the server.  
+3. Simple HUD with total‑attacks counter and attack‑type legend.  
+4. Responsive, full‑screen UI (desktop & mobile).  
+5. Typed, documented, well‑formatted source.
+
+### Required libraries
+| Concern            | Lib                                         |
+|--------------------|---------------------------------------------|
+| 3‑D globe          | `three`, `three‑globe`                      |
+| Real‑time channel  | `socket.io` (server + client)               |
+| Build tooling      | `vite`, `typescript`, `@types/node`         |
+| Lint/format        | `eslint`, `prettier`, `husky` (pre‑commit)  |
+| Utility            | `zod` for schema validation (attack events) |
+
+### File / folder structure
+
