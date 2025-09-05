@@ -3,6 +3,7 @@ import { AttackTypeConfig } from '../types/attack.js';
 
 const Legend: React.FC = () => (
   <div
+    className="legend"
     style={{
       width: '100%',
       display: 'flex',

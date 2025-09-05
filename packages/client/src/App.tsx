@@ -43,9 +43,9 @@ const App: React.FC = () => {
         <img src="/logo.svg" alt="Logo" style={{ height: 36, marginRight: 16 }} />
       </div>
       {/* Main Content */}
-      <div style={{ flex: 1, display: 'flex', minHeight: 0 }}>
+      <div className="main-content" style={{ flex: 1, display: 'flex', minHeight: 0 }}>
         {/* Left Sidebar */}
-        <div style={{
+        <div className="sidebar-left" style={{
           width: 250,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
@@ -100,7 +100,7 @@ const App: React.FC = () => {
         {/* Scale Indicator (Development Only) */}
         <ScaleIndicator />
         {/* Always show right sidebar */}
-        <div style={{
+        <div className="sidebar-right" style={{
           width: 250,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
