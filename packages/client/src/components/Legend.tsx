@@ -33,7 +33,7 @@ const Legend: React.FC = () => (
             boxShadow: `0 0 4px ${config.color}`,
           }}
         />
-        <span style={{ color: '#fff', fontWeight: 700, fontSize: 16, lineHeight: 1 }}>{config.name}</span>
+        <span className="legend-item" style={{ color: '#fff', fontWeight: 700, fontSize: 16, lineHeight: 1 }}>{config.name}</span>
       </div>
     ))}
   </div>

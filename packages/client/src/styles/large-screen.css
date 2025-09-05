@@ -1,0 +1,116 @@
+/* Large Screen Scaling for 55-inch displays and above */
+
+/* Ensure the root container takes full viewport */
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Base scaling for large screens */
+@media (min-width: 1920px) {
+  /* Scale up the entire app for better visibility on large screens */
+  #root {
+    transform: scale(1.2);
+    transform-origin: top left;
+    width: 83.33%; /* 100% / 1.2 to prevent horizontal overflow */
+    height: 83.33%; /* 100% / 1.2 to prevent vertical overflow */
+  }
+}
+
+@media (min-width: 2560px) {
+  /* Ultra-wide displays */
+  #root {
+    transform: scale(1.4);
+    transform-origin: top left;
+    width: 71.43%; /* 100% / 1.4 */
+    height: 71.43%;
+  }
+}
+
+@media (min-width: 3840px) {
+  /* 4K and 55-inch displays */
+  #root {
+    transform: scale(1.6);
+    transform-origin: top left;
+    width: 62.5%; /* 100% / 1.6 */
+    height: 62.5%;
+  }
+}
+
+/* Scale up specific elements for better visibility on large screens */
+@media (min-width: 1920px) {
+  /* Scale up the main title */
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  /* Scale up the attack counter */
+  .attack-counter {
+    font-size: 4rem !important;
+  }
+  
+  /* Scale up sidebar content */
+  .sidebar-content {
+    font-size: 1.1rem;
+  }
+  
+  /* Scale up legend */
+  .legend-item {
+    font-size: 1.1rem;
+  }
+  
+  /* Scale up the map container */
+  .map-container {
+    transform: scale(1.1);
+    transform-origin: center;
+  }
+}
+
+@media (min-width: 2560px) {
+  h1 {
+    font-size: 3rem !important;
+  }
+  
+  .attack-counter {
+    font-size: 5rem !important;
+  }
+  
+  .sidebar-content {
+    font-size: 1.2rem;
+  }
+  
+  .legend-item {
+    font-size: 1.2rem;
+  }
+  
+  /* Scale up the map container more for ultra-wide */
+  .map-container {
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+}
+
+@media (min-width: 3840px) {
+  h1 {
+    font-size: 3.5rem !important;
+  }
+  
+  .attack-counter {
+    font-size: 6rem !important;
+  }
+  
+  .sidebar-content {
+    font-size: 1.3rem;
+  }
+  
+  .legend-item {
+    font-size: 1.3rem;
+  }
+  
+  /* Scale up the map container significantly for 55-inch displays */
+  .map-container {
+    transform: scale(1.4);
+    transform-origin: center;
+  }
+}

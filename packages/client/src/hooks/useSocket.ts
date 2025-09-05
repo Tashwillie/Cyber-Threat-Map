@@ -6,7 +6,7 @@ export const useSocket = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
-  const [totalAttacks, setTotalAttacks] = useState(0);
+  const [totalAttacks, setTotalAttacks] = useState(2500000 + Math.floor(Math.random() * 1000000));
 
   useEffect(() => {
     const newSocket = io('http://localhost:4000');
@@ -33,7 +33,7 @@ export const useSocket = () => {
           // Keep only last 100 attacks to prevent memory issues
           return newAttacks.slice(-100);
         });
-        setTotalAttacks(prev => prev + 1);
+        setTotalAttacks(prev => prev + Math.floor(Math.random() * 50) + 25);
       } catch (error) {
         console.error('Invalid attack data received:', error);
       }
@@ -44,6 +44,15 @@ export const useSocket = () => {
     return () => {
       newSocket.close();
     };
+  }, []);
+
+  // Background growth effect - simulate continuous attack growth
+  useEffect(() => {
+    const growthInterval = setInterval(() => {
+      setTotalAttacks(prev => prev + Math.floor(Math.random() * 20) + 10);
+    }, 1000);
+
+    return () => clearInterval(growthInterval);
   }, []);
 
   return {

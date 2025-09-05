@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: cyber-threat-map-frontend
+    env: static
+    buildCommand: cd packages/client && npm install && npm run build
+    staticPublishPath: packages/client/dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://cyber-threat-map-backend.onrender.com/$1
+
+  - type: web
+    name: cyber-threat-map-backend
+    env: node
+    buildCommand: cd packages/server && npm install
+    startCommand: cd packages/server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

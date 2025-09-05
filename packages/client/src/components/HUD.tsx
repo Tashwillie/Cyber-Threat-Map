@@ -8,7 +8,7 @@ interface HUDProps {
 }
 
 const HUD: React.FC<HUDProps> = ({ totalAttacks, isConnected, attacks }) => {
-  const recentAttacks = attacks.slice(-5).reverse();
+  const recentAttacks = attacks.slice(-10).reverse();
   const attackRate = attacks.length > 0 ? Math.round(attacks.length / 60) : 0; // attacks per minute
 
   return (

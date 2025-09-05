@@ -11,7 +11,7 @@ interface Map2DProps {
   onCountryClick?: (country: string, coords: { x: number; y: number }) => void;
 }
 
-const DISPLAY_WINDOW_MS = 3000;
+const DISPLAY_WINDOW_MS = 8000; // Show attacks for 8 seconds instead of 3
 const Map2D: React.FC<Map2DProps> = ({ attacks, onCountryClick }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 400 });

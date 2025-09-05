@@ -21,7 +21,23 @@ const AttackArcs2D: React.FC<AttackArcs2DProps> = ({ attacks, width, height }) =
   }, []);
 
   // Helper to get [x, y] from lat/lng
-  const project = (lat: number, lng: number) => projection([lng, lat]) as [number, number];
+  const project = (lat: number, lng: number) => {
+    // Validate coordinates before projection
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+      console.warn(`Invalid coordinates: lat=${lat}, lng=${lng}`);
+      return [width / 2, height / 2] as [number, number]; // Fallback to center
+    }
+    
+    const projected = projection([lng, lat]) as [number, number];
+    
+    // Validate projected coordinates are within bounds
+    if (!projected || isNaN(projected[0]) || isNaN(projected[1])) {
+      console.warn(`Projection failed for lat=${lat}, lng=${lng}`);
+      return [width / 2, height / 2] as [number, number]; // Fallback to center
+    }
+    
+    return projected;
+  };
 
   // Animate arc drawing (head moves along the arc)
   const getArcPath = (source: [number, number], target: [number, number], progress: number) => {
@@ -66,7 +82,7 @@ const AttackArcs2D: React.FC<AttackArcs2DProps> = ({ attacks, width, height }) =
         </feMerge>
       </filter>
       {/* Arc gradient (will be set per arc) */}
-      {attacks.slice(-10).map((attack, idx) => {
+      {attacks.slice(-25).map((attack, idx) => {
         const color = AttackTypeConfig[attack.type].color;
         return (
           <linearGradient id={`arc-gradient-${attack.id}`} key={attack.id} x1="0%" y1="0%" x2="100%" y2="0%">
@@ -82,7 +98,7 @@ const AttackArcs2D: React.FC<AttackArcs2DProps> = ({ attacks, width, height }) =
   return (
     <svg width={width} height={height} style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', zIndex: 2 }}>
       {defs}
-      {attacks.slice(-10).map((attack, idx) => {
+      {attacks.slice(-25).map((attack, idx) => {
         const source = project(attack.source.lat, attack.source.lng);
         const target = project(attack.target.lat, attack.target.lng);
         const progress = getProgress(attack, idx);
@@ -90,15 +106,7 @@ const AttackArcs2D: React.FC<AttackArcs2DProps> = ({ attacks, width, height }) =
         // Arc
         return (
           <g key={attack.id}>
-            {/* Arc trail (faint, full arc) */}
-            <path
-              d={getFullArcPath(source, target)}
-              stroke={color}
-              strokeWidth={2}
-              fill="none"
-              opacity={1}
-              style={{ filter: 'url(#neon-glow)' }}
-            />
+            {/* Removed always-on full arc to show only active attack line */}
             {/* Arc main (gradient, animated) */}
             <path
               d={getArcPath(source, target, progress)}

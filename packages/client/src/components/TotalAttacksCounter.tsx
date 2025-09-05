@@ -42,6 +42,7 @@ const TotalAttacksCounter: React.FC<TotalAttacksCounterProps> = ({ value }) => {
       }}
     >
       <span
+        className="attack-counter"
         style={{
           fontSize: 56,
           fontWeight: 900,

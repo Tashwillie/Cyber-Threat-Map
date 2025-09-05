@@ -1,0 +1,25 @@
+{
+  "name": "cyber-threat-map",
+  "version": "1.0.0",
+  "description": "Open-source Cyber-Attack Threat Map web app with responsive scaling",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "install": "cd server && npm install --production",
+    "pm2:start": "pm2 start server/index.js --name cyber-threat-map",
+    "pm2:stop": "pm2 stop cyber-threat-map",
+    "pm2:restart": "pm2 restart cyber-threat-map",
+    "pm2:logs": "pm2 logs cyber-threat-map",
+    "pm2:status": "pm2 status"
+  },
+  "dependencies": {
+    "socket.io": "^4.7.4",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "zod": "^3.22.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
