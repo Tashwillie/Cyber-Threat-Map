@@ -5,7 +5,7 @@ import { AttackEvent } from '../types/attack.js';
 export const useMockSocket = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
-  const [totalAttacks, setTotalAttacks] = useState(0);
+  const [totalAttacks, setTotalAttacks] = useState(2500000 + Math.floor(Math.random() * 1000000));
 
   useEffect(() => {
     // Simulate connection
@@ -70,7 +70,7 @@ export const useMockSocket = () => {
       initialAttacks.push(generateMockAttack());
     }
     setAttacks(initialAttacks);
-    setTotalAttacks(initialAttacks.length);
+    // Don't reset totalAttacks - keep the 2.5M+ starting value
 
     // Generate new attacks every 2-5 seconds
     const interval = setInterval(() => {
@@ -83,6 +83,15 @@ export const useMockSocket = () => {
     }, Math.random() * 3000 + 2000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  // Background growth effect - simulate continuous attack growth
+  useEffect(() => {
+    const growthInterval = setInterval(() => {
+      setTotalAttacks(prev => prev + Math.floor(Math.random() * 20) + 10);
+    }, 1000);
+
+    return () => clearInterval(growthInterval);
   }, []);
 
   return { isConnected, attacks, totalAttacks };
