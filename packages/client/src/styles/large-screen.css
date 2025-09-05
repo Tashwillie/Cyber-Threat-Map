@@ -1,25 +1,42 @@
-/* Fixed Layout for 1280x587 Screen Resolution */
+/* Fixed Layout for 1280x587 Screen Resolution - Viewport Fit */
 
 /* Reset and base styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Fixed viewport for 1280x587 */
+/* Ensure full viewport coverage */
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fixed viewport for 1280x587 - using viewport units */
 #root {
-  width: 1280px;
-  height: 587px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
+  transform-origin: top left;
 }
 
-/* Top bar - fixed height */
+/* Scale to fit 1280x587 aspect ratio */
+#root {
+  transform: scale(calc(100vw / 1280), calc(100vh / 587));
+  width: 1280px;
+  height: 587px;
+}
+
+/* Top bar - proportional height */
 .top-bar {
   width: 1280px;
   height: 64px;
@@ -39,7 +56,7 @@
   position: relative;
 }
 
-/* Left sidebar - fixed width */
+/* Left sidebar - proportional width */
 .sidebar-left {
   width: 250px;
   height: 523px;
@@ -49,7 +66,7 @@
   z-index: 10;
 }
 
-/* Right sidebar - fixed width */
+/* Right sidebar - proportional width */
 .sidebar-right {
   width: 250px;
   height: 523px;
@@ -80,7 +97,7 @@
   flex: 1;
 }
 
-/* Legend - fixed at bottom of map */
+/* Legend - proportional at bottom of map */
 .legend {
   width: 780px;
   height: 60px;
@@ -106,7 +123,7 @@
   object-fit: contain;
 }
 
-/* Fixed typography for 1280x587 */
+/* Proportional typography */
 h1 {
   font-size: 36px;
   margin: 0;
@@ -132,4 +149,19 @@ h1 {
 .map-container {
   display: flex !important;
   visibility: visible !important;
+}
+
+/* Force viewport to maintain aspect ratio */
+@media (max-aspect-ratio: 1280/587) {
+  #root {
+    transform: scale(calc(100vw / 1280));
+    height: calc(100vw * 587 / 1280);
+  }
+}
+
+@media (min-aspect-ratio: 1280/587) {
+  #root {
+    transform: scale(calc(100vh / 587));
+    width: calc(100vh * 1280 / 587);
+  }
 }

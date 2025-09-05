@@ -20,8 +20,8 @@ const App: React.FC = () => {
 
   return (
     <div style={{
-      height: '587px',
-      width: '1280px',
+      height: '100vh',
+      width: '100vw',
       background: 'linear-gradient(180deg, #10131f 0%, #181c2b 100%)',
       fontFamily: 'Inter, Arial, sans-serif',
       overflow: 'hidden',
@@ -30,7 +30,7 @@ const App: React.FC = () => {
     }}>
       {/* Top Bar */}
       <div className="top-bar" style={{
-        width: '1280px',
+        width: '100%',
         height: 64,
         background: 'linear-gradient(90deg, #10131f 0%, #181c2b 100%)',
         borderBottom: '3px solid #00eaff',
@@ -43,11 +43,10 @@ const App: React.FC = () => {
         <img src="/logo.svg" alt="Logo" style={{ height: 36, marginRight: 16 }} />
       </div>
       {/* Main Content */}
-      <div className="main-content" style={{ width: '1280px', height: '523px', display: 'flex' }}>
+      <div className="main-content" style={{ flex: 1, display: 'flex', minHeight: 0 }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
           width: 250,
-          height: 523,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
           padding: '32px 16px 16px 16px',
@@ -66,7 +65,7 @@ const App: React.FC = () => {
           </div>
         </div>
         {/* Main Map Area */}
-        <div className="map-container" style={{ width: 780, height: 523, display: 'flex', flexDirection: 'column', position: 'relative', background: '#10131f', alignItems: 'center' }}>
+        <div className="map-container" style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', background: '#10131f', alignItems: 'center', minWidth: 0 }}>
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 32, marginBottom: 64 }}>
             <h1 style={{
               color: '#fff',
@@ -103,7 +102,6 @@ const App: React.FC = () => {
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
           width: 250,
-          height: 523,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
           padding: '32px 16px 16px 16px',
