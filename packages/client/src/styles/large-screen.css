@@ -1,460 +1,135 @@
-/* Complete Responsive Cyber Threat Map - All Screen Sizes */
+/* Fixed Layout for 1280x587 Screen Resolution */
 
 /* Reset and base styles */
 * {
   box-sizing: border-box;
 }
 
-/* Ensure the root container takes full viewport */
+/* Fixed viewport for 1280x587 */
 #root {
-  width: 100vw;
-  height: 100vh;
+  width: 1280px;
+  height: 587px;
   overflow: hidden;
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-/* Top bar styling */
+/* Top bar - fixed height */
 .top-bar {
-  width: 100% !important;
-  height: 64px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  flex-shrink: 0 !important;
-  z-index: 100 !important;
+  width: 1280px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  z-index: 100;
 }
 
-/* Main content container */
+/* Main content - remaining height */
 .main-content {
-  flex: 1 !important;
-  display: flex !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  position: relative !important;
+  width: 1280px;
+  height: 523px; /* 587 - 64 = 523px */
+  display: flex;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Map container */
-.map-container {
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
-  background: #10131f !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
-  align-items: center !important;
+/* Left sidebar - fixed width */
+.sidebar-left {
+  width: 250px;
+  height: 523px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
-/* Ensure all sidebars and legend are visible */
-.sidebar-left,
+/* Right sidebar - fixed width */
 .sidebar-right {
-  display: flex !important;
-  visibility: visible !important;
-  z-index: 10 !important;
-  flex-shrink: 0 !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
-  flex-direction: column !important;
+  width: 250px;
+  height: 523px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
+/* Map container - remaining width */
+.map-container {
+  width: 780px; /* 1280 - 250 - 250 = 780px */
+  height: 523px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #10131f;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* Sidebar content */
 .sidebar-content {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 0.95 !important;
-  overflow-y: auto !important;
-  min-height: 0 !important;
-  flex: 1 !important;
+  display: block;
+  visibility: visible;
+  opacity: 0.95;
+  overflow-y: auto;
+  flex: 1;
 }
 
+/* Legend - fixed at bottom of map */
 .legend {
-  display: flex !important;
-  visibility: visible !important;
-  z-index: 20 !important;
-  flex-shrink: 0 !important;
-  width: 100% !important;
-  position: relative !important;
-  background: rgba(16, 19, 31, 0.98) !important;
-  border-top: 2px solid #23203b !important;
+  width: 780px;
+  height: 60px;
+  display: flex;
+  visibility: visible;
+  z-index: 20;
+  flex-shrink: 0;
+  position: relative;
+  background: rgba(16, 19, 31, 0.98);
+  border-top: 2px solid #23203b;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }
 
 /* Map 2D container */
 .map-2d-container {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  overflow: hidden !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  object-fit: contain;
 }
 
-/* Extra small screens (mobile portrait) */
-@media (max-width: 480px) {
-  .sidebar-left,
-  .sidebar-right {
-    width: 140px !important;
-    padding: 12px 6px !important;
-  }
-  
-  .legend {
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    padding: 8px 6px !important;
-  }
-  
-  .legend-item {
-    font-size: 10px !important;
-    padding: 4px 8px !important;
-  }
-  
-  h1 {
-    font-size: 18px !important;
-    margin-bottom: 8px !important;
-  }
-  
-  .attack-counter {
-    font-size: 24px !important;
-  }
-  
-  .top-bar {
-    height: 48px !important;
-    padding: 0 16px !important;
-  }
-  
-  .top-bar img {
-    height: 24px !important;
-  }
+/* Fixed typography for 1280x587 */
+h1 {
+  font-size: 36px;
+  margin: 0;
+  margin-bottom: 12px;
 }
 
-/* Small screens (mobile landscape) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .sidebar-left,
-  .sidebar-right {
-    width: 160px !important;
-    padding: 16px 8px !important;
-  }
-  
-  .legend {
-    flex-wrap: wrap !important;
-    gap: 12px !important;
-    padding: 12px 8px !important;
-  }
-  
-  .legend-item {
-    font-size: 12px !important;
-  }
-  
-  h1 {
-    font-size: 22px !important;
-  }
-  
-  .attack-counter {
-    font-size: 28px !important;
-  }
-  
-  .top-bar {
-    height: 56px !important;
-    padding: 0 20px !important;
-  }
-  
-  .top-bar img {
-    height: 28px !important;
-  }
+.attack-counter {
+  font-size: 48px;
 }
 
-/* Medium screens (tablet portrait) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .sidebar-left,
-  .sidebar-right {
-    width: 200px !important;
-    padding: 20px 12px !important;
-  }
-  
-  .legend {
-    gap: 20px !important;
-    padding: 16px 12px !important;
-  }
-  
-  .legend-item {
-    font-size: 14px !important;
-  }
-  
-  h1 {
-    font-size: 28px !important;
-  }
-  
-  .attack-counter {
-    font-size: 36px !important;
-  }
-  
-  .top-bar {
-    height: 60px !important;
-    padding: 0 24px !important;
-  }
-  
-  .top-bar img {
-    height: 32px !important;
-  }
+.legend-item {
+  font-size: 16px;
 }
 
-/* Large screens (tablet landscape / small desktop) */
-@media (min-width: 1025px) and (max-width: 1366px) {
-  .sidebar-left,
-  .sidebar-right {
-    width: 220px !important;
-    padding: 24px 14px !important;
-  }
-  
-  .legend {
-    gap: 24px !important;
-    padding: 18px 14px !important;
-  }
-  
-  .legend-item {
-    font-size: 15px !important;
-  }
-  
-  h1 {
-    font-size: 32px !important;
-  }
-  
-  .attack-counter {
-    font-size: 42px !important;
-  }
-  
-  .top-bar {
-    height: 62px !important;
-    padding: 0 28px !important;
-  }
-  
-  .top-bar img {
-    height: 34px !important;
-  }
+.sidebar-content {
+  font-size: 14px;
 }
 
-/* Desktop screens (standard desktop) */
-@media (min-width: 1367px) and (max-width: 1919px) {
-  .sidebar-left,
-  .sidebar-right {
-    width: 250px !important;
-    padding: 32px 16px 16px 16px !important;
-  }
-  
-  .legend {
-    gap: 32px !important;
-    padding: 20px 16px !important;
-  }
-  
-  .legend-item {
-    font-size: 16px !important;
-  }
-  
-  h1 {
-    font-size: 36px !important;
-  }
-  
-  .attack-counter {
-    font-size: 48px !important;
-  }
-  
-  .top-bar {
-    height: 64px !important;
-    padding: 0 32px !important;
-  }
-  
-  .top-bar img {
-    height: 36px !important;
-  }
-}
-
-/* Large screens (Full HD) */
-@media (min-width: 1920px) and (max-width: 2559px) {
-  /* Scale up the entire app for better visibility on large screens */
-  #root {
-    transform: scale(1.2);
-    transform-origin: top left;
-    width: 83.33%; /* 100% / 1.2 to prevent horizontal overflow */
-    height: 83.33%; /* 100% / 1.2 to prevent vertical overflow */
-  }
-  
-  .sidebar-left,
-  .sidebar-right {
-    width: 200px !important;
-    padding: 28px 14px !important;
-  }
-  
-  .legend {
-    gap: 28px !important;
-    padding: 18px 14px !important;
-  }
-  
-  .legend-item {
-    font-size: 1.1rem !important;
-  }
-  
-  h1 {
-    font-size: 2.5rem !important;
-  }
-  
-  .attack-counter {
-    font-size: 4rem !important;
-  }
-  
-  .sidebar-content {
-    font-size: 1.1rem !important;
-  }
-  
-  .top-bar {
-    height: 68px !important;
-    padding: 0 36px !important;
-  }
-  
-  .top-bar img {
-    height: 40px !important;
-  }
-}
-
-/* Ultra-wide displays (2K) */
-@media (min-width: 2560px) and (max-width: 3839px) {
-  #root {
-    transform: scale(1.4);
-    transform-origin: top left;
-    width: 71.43%; /* 100% / 1.4 */
-    height: 71.43%;
-  }
-  
-  .sidebar-left,
-  .sidebar-right {
-    width: 180px !important;
-    padding: 24px 12px !important;
-  }
-  
-  .legend {
-    gap: 32px !important;
-    padding: 20px 12px !important;
-  }
-  
-  .legend-item {
-    font-size: 1.2rem !important;
-  }
-  
-  h1 {
-    font-size: 3rem !important;
-  }
-  
-  .attack-counter {
-    font-size: 5rem !important;
-  }
-  
-  .sidebar-content {
-    font-size: 1.2rem !important;
-  }
-  
-  .top-bar {
-    height: 72px !important;
-    padding: 0 40px !important;
-  }
-  
-  .top-bar img {
-    height: 44px !important;
-  }
-}
-
-/* 4K and 55-inch displays */
-@media (min-width: 3840px) {
-  #root {
-    transform: scale(1.6);
-    transform-origin: top left;
-    width: 62.5%; /* 100% / 1.6 */
-    height: 62.5%;
-  }
-  
-  .sidebar-left,
-  .sidebar-right {
-    width: 160px !important;
-    padding: 20px 10px !important;
-  }
-  
-  .legend {
-    gap: 36px !important;
-    padding: 22px 10px !important;
-  }
-  
-  .legend-item {
-    font-size: 1.3rem !important;
-  }
-  
-  h1 {
-    font-size: 3.5rem !important;
-    margin-bottom: 8px !important;
-  }
-  
-  .attack-counter {
-    font-size: 6rem !important;
-  }
-  
-  .sidebar-content {
-    font-size: 1.3rem !important;
-    padding: 12px !important;
-  }
-  
-  .top-bar {
-    height: 76px !important;
-    padding: 0 44px !important;
-  }
-  
-  .top-bar img {
-    height: 48px !important;
-  }
-  
-  .map-container > div:first-child {
-    margin-top: 16px !important;
-    margin-bottom: 32px !important;
-  }
-}
-
-/* Additional responsive utilities */
-@media (max-width: 1024px) {
-  /* Hide scale indicator on smaller screens */
-  .scale-indicator {
-    display: none !important;
-  }
-}
-
-/* Ensure map never gets cut off */
-.map-container {
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-.map-2d-container {
-  object-fit: contain !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-}
-
-/* Force visibility for all critical elements */
+/* Ensure all elements are visible */
 .sidebar-left,
 .sidebar-right,
 .legend,
 .map-container {
   display: flex !important;
   visibility: visible !important;
-}
-
-/* Prevent layout collapse */
-.main-content {
-  min-height: 0 !important;
-  flex: 1 !important;
-}
-
-/* Ensure proper text scaling */
-h1, .attack-counter, .legend-item, .sidebar-content {
-  line-height: 1.2 !important;
-  word-wrap: break-word !important;
 }
