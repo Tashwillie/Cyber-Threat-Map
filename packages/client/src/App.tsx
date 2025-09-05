@@ -16,6 +16,11 @@ const App: React.FC = () => {
   const isDevelopment = process.env.NODE_ENV === 'development';
   const socketData = isDevelopment ? useSocket() : useMockSocket();
   const { isConnected, attacks, totalAttacks } = socketData;
+  
+  // Debug logging
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+  console.log('isDevelopment:', isDevelopment);
+  console.log('totalAttacks:', totalAttacks);
   const [selectedCountry, setSelectedCountry] = useState<{ name: string; coords: { x: number; y: number } } | null>(null);
 
   return (

@@ -6,6 +6,9 @@ export const useMockSocket = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
   const [totalAttacks, setTotalAttacks] = useState(2500000 + Math.floor(Math.random() * 1000000));
+  
+  // Debug logging
+  console.log('MockSocket initialized with totalAttacks:', totalAttacks);
 
   useEffect(() => {
     // Simulate connection
