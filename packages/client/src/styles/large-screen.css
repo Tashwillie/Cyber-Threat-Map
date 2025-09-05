@@ -56,9 +56,9 @@ html, body {
   position: relative;
 }
 
-/* Left sidebar - proportional width */
+/* Left sidebar - thinner width */
 .sidebar-left {
-  width: 250px;
+  width: 180px;
   height: 523px;
   display: flex;
   flex-direction: column;
@@ -66,9 +66,9 @@ html, body {
   z-index: 10;
 }
 
-/* Right sidebar - proportional width */
+/* Right sidebar - thinner width */
 .sidebar-right {
-  width: 250px;
+  width: 180px;
   height: 523px;
   display: flex;
   flex-direction: column;
@@ -76,9 +76,9 @@ html, body {
   z-index: 10;
 }
 
-/* Map container - remaining width */
+/* Map container - more space with thinner sidebars */
 .map-container {
-  width: 780px; /* 1280 - 250 - 250 = 780px */
+  width: 920px; /* 1280 - 180 - 180 = 920px */
   height: 523px;
   display: flex;
   flex-direction: column;
@@ -97,9 +97,9 @@ html, body {
   flex: 1;
 }
 
-/* Legend - proportional at bottom of map */
+/* Legend - wider to match new map width */
 .legend {
-  width: 780px;
+  width: 920px;
   height: 60px;
   display: flex;
   visibility: visible;

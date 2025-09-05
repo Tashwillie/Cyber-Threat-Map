@@ -46,21 +46,21 @@ const App: React.FC = () => {
       <div className="main-content" style={{ flex: 1, display: 'flex', minHeight: 0 }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
-          width: 250,
+          width: 180,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
-          padding: '32px 16px 16px 16px',
+          padding: '24px 12px 12px 12px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 32,
+          gap: 24,
           zIndex: 10,
         }}>
           {/* TODO: Add Recent Attacks Graph */}
-          <div style={{ height: 180, background: '#181c2b', borderRadius: 12, marginBottom: 24, padding: 16, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', color: '#fff', opacity: 0.95, boxShadow: '0 0 16px #00eaff22' }}>
+          <div style={{ height: 160, background: '#181c2b', borderRadius: 8, marginBottom: 16, padding: 12, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', color: '#fff', opacity: 0.95, boxShadow: '0 0 16px #00eaff22' }}>
             <RecentAttacksGraph totalAttacks={totalAttacks} />
           </div>
           {/* TODO: Add Attack List */}
-          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 12, padding: 16, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
+          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
             <AttackList attacks={attacks} />
           </div>
         </div>
@@ -101,17 +101,17 @@ const App: React.FC = () => {
         <ScaleIndicator />
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
-          width: 250,
+          width: 180,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
-          padding: '32px 16px 16px 16px',
+          padding: '24px 12px 12px 12px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 32,
+          gap: 24,
           zIndex: 10,
         }}>
           {/* TODO: Add Leaderboards, Legends, Stats */}
-          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 12, padding: 16, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
+          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
             <RightSidebarWidgets />
           </div>
         </div>
