@@ -29,7 +29,7 @@ const App: React.FC = () => {
       flexDirection: 'column',
     }}>
       {/* Top Bar */}
-      <div style={{
+      <div className="top-bar" style={{
         width: '100%',
         height: 64,
         background: 'linear-gradient(90deg, #10131f 0%, #181c2b 100%)',
