@@ -6,22 +6,31 @@ export const useMockSocket = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
   
-  // Get initial value from localStorage or use 2.5M base
+  // Always start from 2.5M+ base, then check localStorage
   const getInitialTotalAttacks = () => {
-    const stored = localStorage.getItem('cyber-threat-total-attacks');
-    if (stored) {
-      const parsed = parseInt(stored, 10);
-      if (!isNaN(parsed) && parsed > 2500000) {
-        return parsed;
+    const baseValue = 2500000 + Math.floor(Math.random() * 500000); // 2.5M to 3M range
+    
+    try {
+      const stored = localStorage.getItem('cyber-threat-total-attacks');
+      if (stored) {
+        const parsed = parseInt(stored, 10);
+        if (!isNaN(parsed) && parsed > 2500000) {
+          return parsed;
+        }
       }
+    } catch (error) {
+      console.log('localStorage not available, using base value');
     }
-    return 2500000 + Math.floor(Math.random() * 500000); // 2.5M to 3M range
+    
+    return baseValue;
   };
   
   const [totalAttacks, setTotalAttacks] = useState(getInitialTotalAttacks);
   
   // Debug logging
   console.log('MockSocket initialized with totalAttacks:', totalAttacks);
+  console.log('Expected range: 2,500,000 to 3,000,000');
+  console.log('Is this value correct?', totalAttacks >= 2500000);
 
   // Save to localStorage whenever totalAttacks changes
   useEffect(() => {
