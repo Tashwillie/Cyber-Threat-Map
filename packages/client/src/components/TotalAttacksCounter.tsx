@@ -52,7 +52,7 @@ const TotalAttacksCounter: React.FC<TotalAttacksCounterProps> = ({ value }) => {
           lineHeight: 1,
         }}
       >
-        {value.toLocaleString()}
+        {displayValue.toLocaleString()}
       </span>
       <span
         style={{
