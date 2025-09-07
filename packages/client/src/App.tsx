@@ -13,10 +13,11 @@ import ScaleIndicator from './components/ScaleIndicator';
 import './styles/responsive.css';
 
 const App: React.FC = () => {
-  // Use mock socket for production (Vercel), real socket for development
+  // Use mock socket for both production and development (for consistent 2.5M+ counter)
   const isDevelopment = process.env.NODE_ENV === 'development';
   const isVercel = process.env.VERCEL === '1';
-  const socketData = (isDevelopment && !isVercel) ? useSocket() : useMockSocket();
+  // Always use MockSocket to ensure 2.5M+ starting value
+  const socketData = useMockSocket();
   const { isConnected, attacks, totalAttacks } = socketData;
   
   // Debug logging
