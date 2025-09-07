@@ -14,8 +14,12 @@ const Legend: React.FC = () => (
       padding: '18px 0 10px 0',
       borderTop: '2px solid #23203b',
       marginTop: 0,
-      position: 'relative',
-      zIndex: 20,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 50,
+      boxSizing: 'border-box',
     }}
   >
     <div style={{ fontWeight: 700, fontSize: 20, color: '#fff', marginRight: 32, letterSpacing: 1 }}>

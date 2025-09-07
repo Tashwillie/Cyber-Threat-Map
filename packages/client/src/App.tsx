@@ -103,6 +103,7 @@ const App: React.FC = () => {
           boxSizing: 'border-box',
           height: '100%',
           width: '100%',
+          paddingBottom: '80px', // Add padding for Legend
         }}>
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 32, marginBottom: 64 }}>
             <h1 style={{
