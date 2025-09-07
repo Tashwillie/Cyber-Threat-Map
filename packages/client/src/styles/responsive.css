@@ -1,5 +1,18 @@
 /* Responsive Design for Cyber Threat Map */
 
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
 /* Mobile Styles (up to 768px) */
 @media (max-width: 768px) {
   .main-content {

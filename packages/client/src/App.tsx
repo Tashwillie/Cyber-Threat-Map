@@ -36,8 +36,12 @@ const App: React.FC = () => {
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
-      position: 'relative',
+      position: 'fixed',
+      top: 0,
+      left: 0,
       boxSizing: 'border-box',
+      margin: 0,
+      padding: 0,
     }}>
       {/* Top Bar */}
       <div className="top-bar" style={{
@@ -54,7 +58,14 @@ const App: React.FC = () => {
         <img src="/logo.svg" alt="Logo" style={{ height: 36, marginRight: 16 }} />
       </div>
       {/* Main Content */}
-      <div className="main-content" style={{ flex: 1, display: 'flex', minHeight: 0 }}>
+      <div className="main-content" style={{ 
+        flex: 1, 
+        display: 'flex', 
+        minHeight: 0,
+        height: 'calc(100vh - 64px)',
+        width: '100%',
+        overflow: 'hidden',
+      }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
           width: 180,
@@ -89,6 +100,8 @@ const App: React.FC = () => {
           minWidth: 0,
           overflow: 'hidden',
           boxSizing: 'border-box',
+          height: '100%',
+          width: '100%',
         }}>
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 32, marginBottom: 64 }}>
             <h1 style={{
@@ -106,7 +119,17 @@ const App: React.FC = () => {
             </h1>
             <TotalAttacksCounter value={totalAttacks} />
           </div>
-          <div style={{ flex: 1, minHeight: 0, position: 'relative', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+          <div style={{ 
+            flex: 1, 
+            minHeight: 0, 
+            position: 'relative', 
+            width: '100%', 
+            height: '100%',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            overflow: 'hidden' 
+          }}>
             <Map2D
               attacks={attacks}
               onCountryClick={(country, coords) => setSelectedCountry({ name: country, coords })}
