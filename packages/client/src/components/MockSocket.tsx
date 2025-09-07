@@ -28,12 +28,8 @@ export const useMockSocket = () => {
     localStorage.setItem('cyber-threat-total-attacks', totalAttacks.toString());
   }, [totalAttacks]);
 
-  useEffect(() => {
-    // Simulate connection
-    setIsConnected(true);
-
-    // Generate mock attacks
-    const generateMockAttack = (): AttackEvent => {
+  // Generate mock attacks function (moved outside useEffect for reuse)
+  const generateMockAttack = (): AttackEvent => {
       const attackTypes = ['ddos', 'malware', 'phishing', 'ransomware', 'sql-injection'] as const;
       const severities = ['low', 'medium', 'high', 'critical'] as const;
       
@@ -85,15 +81,19 @@ export const useMockSocket = () => {
       };
     };
 
+  useEffect(() => {
+    // Simulate connection
+    setIsConnected(true);
+
     // Generate initial attacks
     const initialAttacks: AttackEvent[] = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 2500000; i++) {
       initialAttacks.push(generateMockAttack());
     }
     setAttacks(initialAttacks);
     // Don't reset totalAttacks - keep the 2.5M+ starting value
 
-    // Generate new attacks every 2-5 seconds
+    // Generate new attacks every 0.5-2 seconds (much faster!)
     const interval = setInterval(() => {
       const newAttack = generateMockAttack();
       setAttacks(prev => {
@@ -101,16 +101,37 @@ export const useMockSocket = () => {
         setTotalAttacks(prev => prev + 1);
         return updated;
       });
-    }, Math.random() * 3000 + 2000);
+    }, Math.random() * 1500 + 500); // 0.5-2 seconds instead of 2-5 seconds
 
     return () => clearInterval(interval);
   }, []);
 
-  // Background growth effect - simulate continuous attack growth
+  // Burst attack patterns - occasional rapid-fire attacks
+  useEffect(() => {
+    const burstInterval = setInterval(() => {
+      if (Math.random() < 0.3) { // 30% chance every 3 seconds
+        const burstCount = Math.floor(Math.random() * 5) + 3; // 3-7 attacks in burst
+        for (let i = 0; i < burstCount; i++) {
+          setTimeout(() => {
+            const newAttack = generateMockAttack();
+            setAttacks(prev => {
+              const updated = [...prev.slice(-19), newAttack];
+              setTotalAttacks(prev => prev + 1);
+              return updated;
+            });
+          }, i * 100); // Stagger burst attacks by 100ms
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(burstInterval);
+  }, []);
+
+  // Background growth effect - simulate continuous attack growth (faster!)
   useEffect(() => {
     const growthInterval = setInterval(() => {
-      setTotalAttacks(prev => prev + Math.floor(Math.random() * 20) + 10);
-    }, 1000);
+      setTotalAttacks(prev => prev + Math.floor(Math.random() * 50) + 25); // 25-75 per second instead of 10-30
+    }, 500); // Every 0.5 seconds instead of 1 second
 
     return () => clearInterval(growthInterval);
   }, []);
