@@ -5,10 +5,28 @@ import { AttackEvent } from '../types/attack.js';
 export const useMockSocket = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
-  const [totalAttacks, setTotalAttacks] = useState(2500000 + Math.floor(Math.random() * 1000000));
+  
+  // Get initial value from localStorage or use 2.5M base
+  const getInitialTotalAttacks = () => {
+    const stored = localStorage.getItem('cyber-threat-total-attacks');
+    if (stored) {
+      const parsed = parseInt(stored, 10);
+      if (!isNaN(parsed) && parsed > 2500000) {
+        return parsed;
+      }
+    }
+    return 2500000 + Math.floor(Math.random() * 500000); // 2.5M to 3M range
+  };
+  
+  const [totalAttacks, setTotalAttacks] = useState(getInitialTotalAttacks);
   
   // Debug logging
   console.log('MockSocket initialized with totalAttacks:', totalAttacks);
+
+  // Save to localStorage whenever totalAttacks changes
+  useEffect(() => {
+    localStorage.setItem('cyber-threat-total-attacks', totalAttacks.toString());
+  }, [totalAttacks]);
 
   useEffect(() => {
     // Simulate connection
