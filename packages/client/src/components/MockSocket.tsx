@@ -85,12 +85,24 @@ export const useMockSocket = () => {
     // Simulate connection
     setIsConnected(true);
 
-    // Generate initial attacks
+    // Generate initial attacks (simulate 2.5M with visual effect)
     const initialAttacks: AttackEvent[] = [];
-    for (let i = 0; i < 2500000; i++) {
+    for (let i = 0; i < 200; i++) { // 200 attacks for visual impact
       initialAttacks.push(generateMockAttack());
     }
     setAttacks(initialAttacks);
+    
+    // Rapidly add more attacks to simulate 2.5M effect
+    let rapidCount = 0;
+    const rapidInterval = setInterval(() => {
+      if (rapidCount < 1000) { // Add 1000 more attacks rapidly
+        const newAttack = generateMockAttack();
+        setAttacks(prev => [...prev.slice(-199), newAttack]);
+        rapidCount++;
+      } else {
+        clearInterval(rapidInterval);
+      }
+    }, 10); // Every 10ms for rapid effect
     // Don't reset totalAttacks - keep the 2.5M+ starting value
 
     // Generate new attacks every 0.5-2 seconds (much faster!)
