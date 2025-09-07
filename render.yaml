@@ -1,19 +1,10 @@
 services:
   - type: web
-    name: cyber-threat-map-frontend
-    env: static
-    buildCommand: cd packages/client && npm install && npm run build
-    staticPublishPath: packages/client/dist
-    routes:
-      - type: rewrite
-        source: /api/*
-        destination: https://cyber-threat-map-backend.onrender.com/$1
-
-  - type: web
-    name: cyber-threat-map-backend
+    name: cyber-threat-map-fullstack
     env: node
-    buildCommand: cd packages/server && npm install
-    startCommand: cd packages/server && npm start
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm start
     envVars:
       - key: NODE_ENV
         value: production
+    healthCheckPath: /health

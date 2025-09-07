@@ -1,0 +1,9 @@
+@echo off
+echo Adding files to git...
+git add .
+echo Committing changes...
+git commit -m "Fix Railway deployment: Add start command and static file serving"
+echo Pushing to GitHub...
+git push origin master
+echo Deployment complete! Railway should now build and deploy automatically.
+pause

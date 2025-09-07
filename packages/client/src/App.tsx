@@ -12,14 +12,17 @@ import CountryStatsCard from './components/CountryStatsSidebar';
 import ScaleIndicator from './components/ScaleIndicator';
 
 const App: React.FC = () => {
-  // Use mock socket for static hosting, real socket for development
+  // Use mock socket for production (Vercel), real socket for development
   const isDevelopment = process.env.NODE_ENV === 'development';
-  const socketData = isDevelopment ? useSocket() : useMockSocket();
+  const isVercel = process.env.VERCEL === '1';
+  const socketData = (isDevelopment && !isVercel) ? useSocket() : useMockSocket();
   const { isConnected, attacks, totalAttacks } = socketData;
   
   // Debug logging
   console.log('NODE_ENV:', process.env.NODE_ENV);
   console.log('isDevelopment:', isDevelopment);
+  console.log('isVercel:', isVercel);
+  console.log('Using socket:', (isDevelopment && !isVercel) ? 'Real Socket' : 'Mock Socket');
   console.log('totalAttacks:', totalAttacks);
   const [selectedCountry, setSelectedCountry] = useState<{ name: string; coords: { x: number; y: number } } | null>(null);
 

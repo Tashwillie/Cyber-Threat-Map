@@ -2,6 +2,8 @@ import express from 'express';
 import http from 'http';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { generateMockAttack } from './utils/mockData.js';
 import { AttackEventSchema } from './types/attack.js';
 
@@ -9,6 +11,14 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
 
 const app = express();
 app.use(cors());
+
+// Serve static files from the client build
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.join(__dirname, '../../client/dist');
+
+// Serve static files
+app.use(express.static(clientDistPath));
 
 const server = http.createServer(app);
 const io = new SocketIOServer(server, {
@@ -20,6 +30,11 @@ const io = new SocketIOServer(server, {
 // HTTP endpoint for health check
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
+});
+
+// Catch-all handler: send back React's index.html file for client-side routing
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 // Socket.IO connection

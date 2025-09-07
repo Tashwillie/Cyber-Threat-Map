@@ -1,31 +1,31 @@
 {
   "version": 2,
+  "buildCommand": "npm install -g pnpm && rm -f pnpm-lock.yaml && pnpm install --ignore-scripts && pnpm run build",
   "builds": [
     {
-      "src": "packages/client/package.json",
-      "use": "@vercel/static-build",
+      "src": "packages/server/src/index.ts",
+      "use": "@vercel/node",
       "config": {
-        "distDir": "dist"
+        "includeFiles": ["packages/client/dist/**"],
+        "maxDuration": 30
       }
-    },
-    {
-      "src": "packages/server/index.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/packages/server/index.js"
+      "src": "/health",
+      "dest": "packages/server/src/index.ts"
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "packages/server/src/index.ts"
     },
     {
       "src": "/(.*)",
-      "dest": "/packages/client/dist/$1"
+      "dest": "packages/server/src/index.ts"
     }
   ],
-  "functions": {
-    "packages/server/index.js": {
-      "maxDuration": 30
-    }
+  "env": {
+    "NODE_ENV": "production"
   }
 }
