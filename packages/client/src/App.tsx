@@ -10,6 +10,7 @@ import TotalAttacksCounter from './components/TotalAttacksCounter';
 import Legend from './components/Legend';
 import CountryStatsCard from './components/CountryStatsSidebar';
 import ScaleIndicator from './components/ScaleIndicator';
+import './styles/responsive.css';
 
 const App: React.FC = () => {
   // Use mock socket for production (Vercel), real socket for development
@@ -35,6 +36,8 @@ const App: React.FC = () => {
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
+      position: 'relative',
+      boxSizing: 'border-box',
     }}>
       {/* Top Bar */}
       <div className="top-bar" style={{
@@ -55,6 +58,7 @@ const App: React.FC = () => {
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
           width: 180,
+          minWidth: 180,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
           padding: '24px 12px 12px 12px',
@@ -62,6 +66,8 @@ const App: React.FC = () => {
           flexDirection: 'column',
           gap: 24,
           zIndex: 10,
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         }}>
           {/* TODO: Add Recent Attacks Graph */}
           <div style={{ height: 160, background: '#181c2b', borderRadius: 8, marginBottom: 16, padding: 12, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', color: '#fff', opacity: 0.95, boxShadow: '0 0 16px #00eaff22' }}>
@@ -73,7 +79,17 @@ const App: React.FC = () => {
           </div>
         </div>
         {/* Main Map Area */}
-        <div className="map-container" style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', background: '#10131f', alignItems: 'center', minWidth: 0 }}>
+        <div className="map-container" style={{ 
+          flex: 1, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          position: 'relative', 
+          background: '#10131f', 
+          alignItems: 'center', 
+          minWidth: 0,
+          overflow: 'hidden',
+          boxSizing: 'border-box',
+        }}>
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 32, marginBottom: 64 }}>
             <h1 style={{
               color: '#fff',
@@ -110,6 +126,7 @@ const App: React.FC = () => {
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
           width: 180,
+          minWidth: 180,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
           padding: '24px 12px 12px 12px',
@@ -117,6 +134,8 @@ const App: React.FC = () => {
           flexDirection: 'column',
           gap: 24,
           zIndex: 10,
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         }}>
           {/* TODO: Add Leaderboards, Legends, Stats */}
           <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>

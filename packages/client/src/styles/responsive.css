@@ -1,0 +1,132 @@
+/* Responsive Design for Cyber Threat Map */
+
+/* Mobile Styles (up to 768px) */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column !important;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    max-height: 200px !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1.5px solid #00eaff44 !important;
+    padding: 12px !important;
+  }
+  
+  .sidebar-right {
+    border-bottom: none !important;
+    border-top: 1.5px solid #00eaff44 !important;
+  }
+  
+  .map-container {
+    flex: 1 !important;
+    min-height: 300px !important;
+  }
+  
+  .map-container h1 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .attack-counter {
+    font-size: 36px !important;
+  }
+  
+  .top-bar {
+    height: 48px !important;
+    padding: 0 16px !important;
+  }
+  
+  .top-bar img {
+    height: 28px !important;
+  }
+}
+
+/* Tablet Styles (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar-left,
+  .sidebar-right {
+    width: 150px !important;
+    min-width: 150px !important;
+    padding: 16px 8px !important;
+  }
+  
+  .map-container h1 {
+    font-size: 28px !important;
+  }
+  
+  .attack-counter {
+    font-size: 48px !important;
+  }
+}
+
+/* Small Desktop (1025px to 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .sidebar-left,
+  .sidebar-right {
+    width: 160px !important;
+    min-width: 160px !important;
+  }
+}
+
+/* Large Desktop (1281px+) */
+@media (min-width: 1281px) {
+  .sidebar-left,
+  .sidebar-right {
+    width: 200px !important;
+    min-width: 200px !important;
+  }
+  
+  .map-container h1 {
+    font-size: 42px !important;
+  }
+  
+  .attack-counter {
+    font-size: 64px !important;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .main-content {
+    flex-direction: row !important;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    width: 120px !important;
+    min-width: 120px !important;
+    height: 100% !important;
+    max-height: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    border-right: 1.5px solid #00eaff44 !important;
+  }
+  
+  .sidebar-right {
+    border-left: 1.5px solid #00eaff44 !important;
+    border-right: none !important;
+  }
+  
+  .map-container h1 {
+    font-size: 20px !important;
+  }
+  
+  .attack-counter {
+    font-size: 28px !important;
+  }
+}
+
+/* Prevent horizontal scroll */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  overflow-x: hidden;
+}

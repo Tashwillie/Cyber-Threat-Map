@@ -21,7 +21,16 @@ const Map2D: React.FC<Map2DProps> = ({ attacks, onCountryClick }) => {
     const handleResize = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
+        // Ensure minimum dimensions and responsive scaling
+        const minWidth = 300;
+        const minHeight = 200;
+        const maxWidth = Math.min(width, 1200);
+        const maxHeight = Math.min(height, 800);
+        
+        setDimensions({ 
+          width: Math.max(minWidth, maxWidth), 
+          height: Math.max(minHeight, maxHeight) 
+        });
       }
     };
     handleResize();
