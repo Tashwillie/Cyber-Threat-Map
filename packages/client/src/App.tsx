@@ -174,22 +174,100 @@ const App: React.FC = () => {
         <ScaleIndicator />
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
-          width: 180,
-          minWidth: 180,
+          width: 200,
+          minWidth: 200,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
-          padding: '24px 12px 12px 12px',
+          padding: '20px 16px 16px 16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 24,
+          gap: 20,
           zIndex: 20,
           boxSizing: 'border-box',
-          overflow: 'hidden',
+          overflow: 'visible',
           position: 'relative',
+          height: '100%',
         }}>
-          {/* TODO: Add Leaderboards, Legends, Stats */}
-          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
+          {/* Top Vulnerabilities Section */}
+          <div style={{ 
+            background: '#181c2b', 
+            borderRadius: 8, 
+            padding: 16, 
+            color: '#fff', 
+            opacity: 0.95, 
+            boxShadow: '0 0 16px #00eaff22',
+            marginBottom: 16,
+            minHeight: 200,
+          }}>
             <RightSidebarWidgets />
+          </div>
+          {/* Additional Stats Section */}
+          <div className="sidebar-content" style={{ 
+            flex: 1, 
+            background: '#181c2b', 
+            borderRadius: 8, 
+            padding: 16, 
+            color: '#fff', 
+            opacity: 0.95, 
+            overflowY: 'auto', 
+            boxShadow: '0 0 16px #00eaff22',
+            minHeight: 300,
+          }}>
+            <div style={{ marginBottom: 16 }}>
+              <h3 style={{ color: '#00eaff', fontSize: 16, fontWeight: 'bold', marginBottom: 12 }}>
+                TOP TARGETED COUNTRIES
+              </h3>
+              <div style={{ fontSize: 14, lineHeight: 1.6 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🇲🇳 Mongolia</span>
+                  <span style={{ color: '#ff6b6b' }}>234</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🇮🇳 India</span>
+                  <span style={{ color: '#ff6b6b' }}>205</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🇨🇳 China</span>
+                  <span style={{ color: '#ff6b6b' }}>179</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🇳🇬 Nigeria</span>
+                  <span style={{ color: '#ff6b6b' }}>176</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🇧🇷 Brazil</span>
+                  <span style={{ color: '#ff6b6b' }}>141</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 style={{ color: '#00eaff', fontSize: 16, fontWeight: 'bold', marginBottom: 12 }}>
+                TOP TARGETED INDUSTRIES
+              </h3>
+              <div style={{ fontSize: 14, lineHeight: 1.6 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🏥 Healthcare</span>
+                  <span style={{ color: '#ff6b6b' }}>45%</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🏦 Finance</span>
+                  <span style={{ color: '#ff6b6b' }}>38%</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🎓 Education</span>
+                  <span style={{ color: '#ff6b6b' }}>32%</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🏭 Manufacturing</span>
+                  <span style={{ color: '#ff6b6b' }}>28%</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <span>🏛️ Government</span>
+                  <span style={{ color: '#ff6b6b' }}>25%</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
