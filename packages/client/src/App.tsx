@@ -72,25 +72,45 @@ const App: React.FC = () => {
       }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
-          width: 180,
-          minWidth: 180,
+          width: 200,
+          minWidth: 200,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
-          padding: '24px 12px 12px 12px',
+          padding: '20px 16px 16px 16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 24,
+          gap: 20,
           zIndex: 20,
           boxSizing: 'border-box',
-          overflow: 'hidden',
+          overflow: 'visible',
           position: 'relative',
+          height: '100%',
         }}>
-          {/* TODO: Add Recent Attacks Graph */}
-          <div style={{ height: 160, background: '#181c2b', borderRadius: 8, marginBottom: 16, padding: 12, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', color: '#fff', opacity: 0.95, boxShadow: '0 0 16px #00eaff22' }}>
+          {/* Recent Daily Attacks Section */}
+          <div style={{ 
+            background: '#181c2b', 
+            borderRadius: 8, 
+            padding: 16, 
+            color: '#fff', 
+            opacity: 0.95, 
+            boxShadow: '0 0 16px #00eaff22',
+            marginBottom: 16,
+            minHeight: 180,
+          }}>
             <RecentAttacksGraph totalAttacks={totalAttacks} />
           </div>
-          {/* TODO: Add Attack List */}
-          <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
+          {/* Recent Attacks List */}
+          <div className="sidebar-content" style={{ 
+            flex: 1, 
+            background: '#181c2b', 
+            borderRadius: 8, 
+            padding: 16, 
+            color: '#fff', 
+            opacity: 0.95, 
+            overflowY: 'auto', 
+            boxShadow: '0 0 16px #00eaff22',
+            minHeight: 300,
+          }}>
             <AttackList attacks={attacks} />
           </div>
         </div>

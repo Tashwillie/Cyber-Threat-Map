@@ -24,11 +24,12 @@ body, html {
     width: 100% !important;
     min-width: 100% !important;
     height: auto !important;
-    max-height: 200px !important;
+    max-height: 300px !important;
     border-right: none !important;
     border-left: none !important;
     border-bottom: 1.5px solid #00eaff44 !important;
-    padding: 12px !important;
+    padding: 16px !important;
+    overflow: visible !important;
   }
   
   .sidebar-right {
@@ -64,9 +65,10 @@ body, html {
 @media (min-width: 769px) and (max-width: 1024px) {
   .sidebar-left,
   .sidebar-right {
-    width: 150px !important;
-    min-width: 150px !important;
-    padding: 16px 8px !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
   }
   
   .map-container h1 {
