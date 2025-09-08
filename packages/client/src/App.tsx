@@ -72,8 +72,8 @@ const App: React.FC = () => {
       }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
-          width: 200,
-          minWidth: 200,
+          width: 250,
+          minWidth: 250,
           background: 'rgba(16, 19, 31, 0.98)',
           borderRight: '1.5px solid #00eaff44',
           padding: '20px 16px 16px 16px',
@@ -174,8 +174,8 @@ const App: React.FC = () => {
         <ScaleIndicator />
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
-          width: 220,
-          minWidth: 220,
+          width: 250,
+          minWidth: 250,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
           padding: '20px 16px 16px 16px',
