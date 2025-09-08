@@ -174,14 +174,14 @@ const App: React.FC = () => {
         <ScaleIndicator />
         {/* Always show right sidebar */}
         <div className="sidebar-right" style={{
-          width: 200,
-          minWidth: 200,
+          width: 220,
+          minWidth: 220,
           background: 'rgba(16, 19, 31, 0.98)',
           borderLeft: '1.5px solid #00eaff44',
           padding: '20px 16px 16px 16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 20,
+          gap: 16,
           zIndex: 20,
           boxSizing: 'border-box',
           overflow: 'visible',
@@ -197,9 +197,102 @@ const App: React.FC = () => {
             opacity: 0.95, 
             boxShadow: '0 0 16px #00eaff22',
             marginBottom: 16,
-            minHeight: 200,
+            minHeight: 400,
+            overflowY: 'auto',
           }}>
-            <RightSidebarWidgets />
+            <h3 style={{ color: '#00eaff', fontSize: 16, fontWeight: 'bold', marginBottom: 12, textTransform: 'uppercase' }}>
+              TOP VULNERABILITIES
+            </h3>
+            <p style={{ color: '#aaa', fontSize: 12, marginBottom: 16, lineHeight: 1.4 }}>
+              Most exploited vulnerabilities in the last 24 hours.
+            </p>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div style={{ 
+                background: '#0f1115', 
+                padding: 12, 
+                borderRadius: 6, 
+                borderLeft: '3px solid #ff6b6b',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff6b6b' }}></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 'bold', color: '#fff' }}>CVE-2023-23397</div>
+                  <div style={{ fontSize: 11, color: '#ccc', marginTop: 2 }}>Microsoft Outlook Elevation of Privilege</div>
+                  <div style={{ fontSize: 10, color: '#ff6b6b', marginTop: 4, fontWeight: 'bold' }}>HIGH</div>
+                </div>
+              </div>
+              
+              <div style={{ 
+                background: '#0f1115', 
+                padding: 12, 
+                borderRadius: 6, 
+                borderLeft: '3px solid #ff6b6b',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff6b6b' }}></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 'bold', color: '#fff' }}>CVE-2022-30190</div>
+                  <div style={{ fontSize: 11, color: '#ccc', marginTop: 2 }}>Microsoft Support Diagnostic Tool</div>
+                  <div style={{ fontSize: 10, color: '#ff6b6b', marginTop: 4, fontWeight: 'bold' }}>HIGH</div>
+                </div>
+              </div>
+              
+              <div style={{ 
+                background: '#0f1115', 
+                padding: 12, 
+                borderRadius: 6, 
+                borderLeft: '3px solid #ff6b6b',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff6b6b' }}></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 'bold', color: '#fff' }}>CVE-2021-44228</div>
+                  <div style={{ fontSize: 11, color: '#ccc', marginTop: 2 }}>Log4j Remote Code Execution</div>
+                  <div style={{ fontSize: 10, color: '#ff6b6b', marginTop: 4, fontWeight: 'bold' }}>CRITICAL</div>
+                </div>
+              </div>
+              
+              <div style={{ 
+                background: '#0f1115', 
+                padding: 12, 
+                borderRadius: 6, 
+                borderLeft: '3px solid #ff6b6b',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff6b6b' }}></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 'bold', color: '#fff' }}>CVE-2022-41040</div>
+                  <div style={{ fontSize: 11, color: '#ccc', marginTop: 2 }}>Microsoft Exchange Server</div>
+                  <div style={{ fontSize: 10, color: '#ff6b6b', marginTop: 4, fontWeight: 'bold' }}>HIGH</div>
+                </div>
+              </div>
+              
+              <div style={{ 
+                background: '#0f1115', 
+                padding: 12, 
+                borderRadius: 6, 
+                borderLeft: '3px solid #ff6b6b',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff6b6b' }}></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 'bold', color: '#fff' }}>CVE-2020-0796</div>
+                  <div style={{ fontSize: 11, color: '#ccc', marginTop: 2 }}>SMBv3 Remote Code Execution</div>
+                  <div style={{ fontSize: 10, color: '#ff6b6b', marginTop: 4, fontWeight: 'bold' }}>CRITICAL</div>
+                </div>
+              </div>
+            </div>
           </div>
           {/* Additional Stats Section */}
           <div className="sidebar-content" style={{ 

@@ -65,8 +65,8 @@ body, html {
 @media (min-width: 769px) and (max-width: 1024px) {
   .sidebar-left,
   .sidebar-right {
-    width: 180px !important;
-    min-width: 180px !important;
+    width: 200px !important;
+    min-width: 200px !important;
     padding: 16px 12px !important;
     overflow: visible !important;
   }
@@ -93,8 +93,8 @@ body, html {
 @media (min-width: 1281px) {
   .sidebar-left,
   .sidebar-right {
-    width: 200px !important;
-    min-width: 200px !important;
+    width: 220px !important;
+    min-width: 220px !important;
   }
   
   .map-container h1 {
