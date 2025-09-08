@@ -43,6 +43,7 @@ const App: React.FC = () => {
       boxSizing: 'border-box',
       margin: 0,
       padding: 0,
+      zIndex: 1,
     }}>
       {/* Top Bar */}
       <div className="top-bar" style={{
@@ -66,6 +67,8 @@ const App: React.FC = () => {
         height: 'calc(100vh - 64px)',
         width: '100%',
         overflow: 'hidden',
+        position: 'relative',
+        zIndex: 2,
       }}>
         {/* Left Sidebar */}
         <div className="sidebar-left" style={{
@@ -77,9 +80,10 @@ const App: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: 24,
-          zIndex: 10,
+          zIndex: 20,
           boxSizing: 'border-box',
           overflow: 'hidden',
+          position: 'relative',
         }}>
           {/* TODO: Add Recent Attacks Graph */}
           <div style={{ height: 160, background: '#181c2b', borderRadius: 8, marginBottom: 16, padding: 12, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', color: '#fff', opacity: 0.95, boxShadow: '0 0 16px #00eaff22' }}>
@@ -158,9 +162,10 @@ const App: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: 24,
-          zIndex: 10,
+          zIndex: 20,
           boxSizing: 'border-box',
           overflow: 'hidden',
+          position: 'relative',
         }}>
           {/* TODO: Add Leaderboards, Legends, Stats */}
           <div className="sidebar-content" style={{ flex: 1, background: '#181c2b', borderRadius: 8, padding: 12, color: '#fff', opacity: 0.95, overflowY: 'auto', boxShadow: '0 0 16px #00eaff22' }}>
