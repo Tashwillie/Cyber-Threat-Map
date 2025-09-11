@@ -6,25 +6,26 @@ export const useMockSocket = () => {
   const [isConnected, setIsConnected] = useState(true);
   const [attacks, setAttacks] = useState<AttackEvent[]>([]);
   
-  // Always start from 2.5M+ base, then check localStorage
+  // Reset strategy: use new storage key and start EXACTLY at 2,500,000
+  const STORAGE_KEY = 'cyber-threat-total-attacks-v2';
   const getInitialTotalAttacks = () => {
-    const baseValue = 2500000 + Math.floor(Math.random() * 500000); // 2.5M to 3M range
-    
+    const baseValue = 2500000; // exact 2.5M
+
     try {
-      const stored = localStorage.getItem('cyber-threat-total-attacks');
+      const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = parseInt(stored, 10);
-        if (!isNaN(parsed) && parsed > 2500000) {
+        if (!isNaN(parsed) && parsed >= baseValue) {
           return parsed;
         }
       }
     } catch (error) {
       console.log('localStorage not available, using base value');
     }
-    
+
     return baseValue;
   };
-  
+
   const [totalAttacks, setTotalAttacks] = useState(getInitialTotalAttacks);
   
   // Debug logging
@@ -34,7 +35,9 @@ export const useMockSocket = () => {
 
   // Save to localStorage whenever totalAttacks changes
   useEffect(() => {
-    localStorage.setItem('cyber-threat-total-attacks', totalAttacks.toString());
+    try {
+      localStorage.setItem(STORAGE_KEY, totalAttacks.toString());
+    } catch {}
   }, [totalAttacks]);
 
   // Generate mock attacks function (moved outside useEffect for reuse)
